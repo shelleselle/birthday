@@ -1,0 +1,253 @@
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Kode Mono' rel='stylesheet'>
+<title>Library</title>
+ <link rel="icon" type="image/x-icon" href="fire.png">
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+
+  height: 100dvh;
+  perspective: 1000px;
+  font: 16px/1.4 sans-serif;
+  overflow: hidden;
+   background-image: url("library.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.book {
+  --c: 0;
+  display: flex;
+  margin: auto;
+  width: 300px;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  rotate: 1 0 0 30deg;
+
+  [name^=book] { display: none; }
+  &:has(#c0:checked) { --c:0; }
+  &:has(#c1:checked) { --c:1; }
+  &:has(#c2:checked) { --c:2; }
+  &:has(#c3:checked) { --c:3; }
+  &:has(#c4:checked) { --c:4; }
+  &:has(#c5:checked) { --c:5; }
+}
+
+.page {
+  --thickness: 5;
+  flex: none;
+  display: flex;
+  width: 100%;
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  border: 1px solid #0008;
+  transform-origin: left center;
+  transition:
+    transform 1s,
+    rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ( calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 1px)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain	;
+  }
+}
+
+
+
+.front,
+.back {
+  flex: none;
+  width: 100%;
+  padding: 2rem;
+  backface-visibility: hidden;
+  background-color: #fff;
+  translate: 0px;
+}
+
+.back {
+  background-image: linear-gradient(to right, #fff 80%, #ddd 100%);
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
+}
+
+a:link {
+  color: pink;
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  	font-family: 'Kode Mono';
+	font-size: 9px;
+	font-weight: bold;
+	  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.hov:hover{
+  transition: .5s ease;
+    opacity: 0.3;
+    transform:scale(1.5);
+}
+
+.hov {
+	height: 80px;
+	width: 80px;
+
+	}
+	
+
+
+.IDKNAHELP {
+color: white;
+font-size: 12px;
+
+}
+</style>
+
+<h1 style="text-align: center;
+color: white;
+  font-family: 'Kode Mono';"	
+>What's going on? <span class="IDKNAHELP"><br>
+Read this book to learn more!
+</span></h1>
+</head>
+<body>
+<br>
+<div class="book">
+  
+  <input type="radio" name="book-1" id="c0">
+  <input type="radio" name="book-1" id="c1">
+  <input type="radio" name="book-1" id="c2">
+  <input type="radio" name="book-1" id="c3">
+  <input type="radio" name="book-1" id="c4">
+  <input type="radio" name="book-1" id="c5">
+
+  <div class="page" style="--i:0;">
+    <div class="front">
+      <label for="c1"></label>
+      <h1>Book of Everything</h1>
+      <h3>11.01.24<br>Second edition</h3>
+    </div>
+    <div class="back">
+      <label for="c0"></label>
+      <h2>Chapter One.</h2>
+		This site is for my awesome girlfriend Gabby Culpable! It's her birthday and I heard she hates coding so I thought she would be impressed if I made a website from scratch! No templates, all HTML, CSS, and Javascript.
+	  </div>
+  </div>
+
+  <div class="page" style="--i:1;">
+    <div class="front">
+      <label for="c2"></label>
+		Happy birthday to my amazing, cool, beautiful, wonderful, great, kind, generous, thoughtful but forgetful, smart, responsible, sweet, and caring girlfriend, friend, favorite, and ka-lowkey! The date, November 1, 2024 marks her 17th birthday! I am very grateful to be a part of her amazing day (and life).
+	  </div>
+    <div class="back">
+     <label for="c1"></label>
+      <h2>Chapter Two:<br><span style="font-size:19px">
+Who is Gabby.</h2>
+     Gabby is this super awesome girl. She has an awesome voice, she's gorgeous, she cares about people (me). She loves ME a lot but I'm sure I love her more. She is a very good friend and an even better girlfriend! Here's a cute pic of us!
+	 </div>
+  </div>
+  <div class="page" style="--i:2;">
+    <div class="front">
+      <label for="c3"></label>
+        <img src="us.png" alt="me n her">   </div>
+    <div class="back">
+      <label for="c2"></label>
+	   <h2>Chapter 3.1:<br><span style="font-size:19px">
+	   How do I use this website?</h2>
+      To go back to the HomePage, scroll at the very bottom of the page and click the Airplane icon. It will redirect you to the HomePage! Sometimes the items will take a while to load, especially on the Song Page so JUST WAIT.
+	  </div>
+  </div>
+
+  <div class="page" style="--i:3;">
+    <div class="front">
+      <label for="c4"></label>
+      <h2>Chapter 3.2:
+<br><span style="font-size:19px">	  What's in this website?</h2>
+		SECRET. Makita mo lng,,,
+   </div>
+    <div class="back">
+      <label for="c3"></label>
+	      <h2>Chapter Four.</h2>
+     I love you Gabby until now and forever SO MUCH. It isn't your birthday na pero I still wish you the best day (and the best life). I am glad to be one of the reasons na you feel happy (?) and everyday I'll make sure you'll feel that most of the time :)
+    </div>
+  </div>
+
+  <div class="page" style="--i:4;">
+    <div class="front">
+      <label for="c5"></label>
+	      <h2>Acknowledgements.</h2>
+		  WALA. Ako gumawa lahat pati background images.
+    </div>
+    <div class="back">
+      <label for="c4"></label>
+      <h3 style = "font-size: 25px">
+	 by seashell.</h3>
+	<p style = "font-size: 15px">
+	gabby's biggest fan</p>
+	</div>
+  </div>
+</div><br>
+<center>
+<div class="footer">
+<div>
+<a href="index.html">
+<br><br>
+<img src = "airplane.png" class="hov">
+</a>
+</div>
+  <p style="color: white">Ride the Airplane to go back Home!</p>
+</div>
+</body>
+</html>
